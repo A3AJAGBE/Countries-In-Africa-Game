@@ -14,22 +14,26 @@ turtle.shape(image)
 # Read the cvs file
 data = pd.read_csv("countries_in_africa.csv")
 countries_list = data.Country.to_list()
+guessed_countries = []
 
-guess = screen.textinput(title="Label the Map", prompt="Guess a country in africa").title()
-print(guess)
+# Keep iterating until the map is fully labeled
+while len(guessed_countries) < 54:
+    guess = screen.textinput(title="Label the Map", prompt="Guess a country in africa").title()
+    print(guess)
 
-# Check the user guess with the data in the csv file
-if guess in countries_list:
-    # Instantiate the turtle class
-    sample = turtle.Turtle()
-    sample.hideturtle()
-    sample.penup()
-    # Get the guess coordinates
-    country_coordinates = data[data.Country == guess]
-    # Get the go to the coordinates
-    sample.goto(int(country_coordinates.X), int(country_coordinates.Y))
-    # Label the map
-    sample.write(country_coordinates.Country.item())
+    # Check the user guess with the data in the csv file
+    if guess in countries_list:
+        guessed_countries.append(guess)
+        # Instantiate the turtle class
+        sample = turtle.Turtle()
+        sample.hideturtle()
+        sample.penup()
+        # Get the guess coordinates
+        country_coordinates = data[data.Country == guess]
+        # Get the go to the coordinates
+        sample.goto(int(country_coordinates.X), int(country_coordinates.Y))
+        # Label the map
+        sample.write(country_coordinates.Country.item())
 
 
 """# Get the x and y coordinates
