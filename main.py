@@ -11,6 +11,10 @@ image = "plain_map_of_africa.gif"
 screen.addshape(image)
 turtle.shape(image)
 
+# Read the cvs file
+data = pd.read_csv("countries_in_africa.csv")
+print(data)
+
 guess = screen.textinput(title="Label the Map", prompt="Guess a country in africa").title()
 print(guess)
 
