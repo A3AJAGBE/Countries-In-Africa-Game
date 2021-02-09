@@ -15,11 +15,12 @@ turtle.shape(image)
 data = pd.read_csv("countries_in_africa.csv")
 countries_list = data.Country.to_list()
 guessed_countries = []
+TOTAL = len(countries_list)
 
 # Keep iterating until the map is fully labeled
 while len(guessed_countries) < 54:
-    guess = screen.textinput(title="Label the Map", prompt="Guess a country in africa").title()
-    print(guess)
+
+    guess = screen.textinput(title=f"Score: {len(guessed_countries)}/{TOTAL}", prompt="Guess a country in africa").title()
 
     # Check the user guess with the data in the csv file
     if guess in countries_list:
@@ -33,7 +34,7 @@ while len(guessed_countries) < 54:
         # Get the go to the coordinates
         sample.goto(int(country_coordinates.X), int(country_coordinates.Y))
         # Label the map
-        sample.write(country_coordinates.Country.item())
+        sample.write(country_coordinates.Country.item(), font=("bold",))
 
 
 """# Get the x and y coordinates
