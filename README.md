@@ -1,6 +1,3 @@
-# Countries-In-Africa-Game
-Label the map of Africa correctly. This is a game application that prompts the user for the countries in Africa.
-
 #Day23 of #100DaysOfCode
 
 
